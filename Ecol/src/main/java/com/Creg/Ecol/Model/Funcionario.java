@@ -1,12 +1,16 @@
 package com.Creg.Ecol.Model;
 
-import java.util.Date;
+import java.util.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,9 +38,13 @@ public class Funcionario {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
-	//@OneToMany
-	//@JsonIgnoreProperties("funcionario")
-	//private Pedido caixa;
+	@ManyToOne
+	@JsonIgnoreProperties("funcionario")
+	private Caixa caixa;
+	
+	@ManyToMany(mappedBy = "funcionario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnoreProperties({"numeroPedido","quantidade"})
+	private List<Pedido> pedido = new ArrayList<>();
 
 	public long getId() {
 		return id;
@@ -78,16 +86,21 @@ public class Funcionario {
 		this.data = data;
 	}
 
-	/*public Pedido getCaixa() {
+	public Caixa getCaixa() {
 		return caixa;
 	}
 
-	public void setCaixa(Pedido caixa) {
+	public void setCaixa(Caixa caixa) {
 		this.caixa = caixa;
-	}*/
-		
-	
-	
+	}
+
+	public List<Pedido> getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(List<Pedido> pedido) {
+		this.pedido = pedido;
+	}
 	
 	
 }

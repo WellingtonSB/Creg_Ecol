@@ -1,12 +1,19 @@
 package com.Creg.Ecol.Model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -16,26 +23,38 @@ public class Caixa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
+	@NotNull
+	private int numeroCaixa;
+
 	@NotNull
 	private String estadoPedido;
-	
+
 	@NotNull
 	private int sku;
-	
+
 	@NotNull
 	private boolean bebida;
-		
+
 	@NotNull
 	private boolean pagamentoConfirmado;
 
 	@NotNull
-	@Digits(integer = 4,fraction= 2)
+	@Digits(integer = 4, fraction = 2)
 	private double valor;
 
-	
-	
-	
+	@OneToMany(mappedBy = "caixa", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("caixa")
+	private List<Funcionario> funcionario;
+
+	public int getNumeroCaixa() {
+		return numeroCaixa;
+	}
+
+	public void setNumeroCaixa(int numeroCaixa) {
+		this.numeroCaixa = numeroCaixa;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -83,10 +102,13 @@ public class Caixa {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	
-	
-	
-	
-	
-	
+
+	public List<Funcionario> getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(List<Funcionario> funcionario) {
+		this.funcionario = funcionario;
+	}
+
 }
