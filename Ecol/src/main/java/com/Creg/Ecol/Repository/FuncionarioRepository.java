@@ -12,6 +12,6 @@ import com.Creg.Ecol.Model.Funcionario;
 @Repository
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 	public Optional<Funcionario> findAllByNomeContainingIgnoreCase(String nome);
-	@Query(value = "SELECT * FROM tb_produto where ativo = :ativo", nativeQuery = true)
+	@Query(value = "SELECT * FROM Funcionario where ativo = :ativo", nativeQuery = true)
 	public Optional<Funcionario> findAllByAtivo(@Param("ativo") boolean ativo);	
 }

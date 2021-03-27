@@ -43,9 +43,9 @@ public class Caixa {
 	@Digits(integer = 4, fraction = 2)
 	private double valor;
 
-	@OneToMany(mappedBy = "caixa", cascade = CascadeType.ALL)
+	/*@OneToMany(mappedBy = "caixa", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("caixa")
-	private List<Funcionario> funcionario;
+	private List<Funcionario> funcionario;*/
 
 	public int getNumeroCaixa() {
 		return numeroCaixa;
@@ -103,12 +103,12 @@ public class Caixa {
 		this.valor = valor;
 	}
 
-	public List<Funcionario> getFuncionario() {
+	/*public List<Funcionario> getFuncionario() {
 		return funcionario;
 	}
 
 	public void setFuncionario(List<Funcionario> funcionario) {
 		this.funcionario = funcionario;
-	}
+	}*/
 
 }

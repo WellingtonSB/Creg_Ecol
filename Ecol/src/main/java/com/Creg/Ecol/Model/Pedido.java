@@ -26,14 +26,23 @@ public class Pedido {
 
 	private int numeroPedido;// service, numeroPedido
 
-	@NotNull
-	private int quantidade;
-
+	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "pedidoFuncionario", joinColumns = @JoinColumn(name = "pedido_id"), inverseJoinColumns = @JoinColumn(name = "funcionario_id"))
 	@JsonIgnoreProperties({ "nome", "ativo", "senha", "data" })
 	private List<Funcionario> funcionario = new ArrayList<>();
+	
+	@ManyToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnoreProperties({"nome","cpf","endereco","formaPagamento","cupom"})
+	private List<Cliente> cliente = new ArrayList<>();
 
+	@ManyToMany(mappedBy = "pedido",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnoreProperties({})
+	
+	
+	
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -48,14 +57,6 @@ public class Pedido {
 
 	public void setNumeroPedido(int numeroPedido) {
 		this.numeroPedido = numeroPedido;
-	}
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	public List<Funcionario> getFuncionario() {

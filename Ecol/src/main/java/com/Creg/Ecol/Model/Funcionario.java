@@ -38,13 +38,13 @@ public class Funcionario {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
-	@ManyToOne
+	/*@ManyToOne
 	@JsonIgnoreProperties("funcionario")
 	private Caixa caixa;
 	
 	@ManyToMany(mappedBy = "funcionario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnoreProperties({"numeroPedido","quantidade"})
-	private List<Pedido> pedido = new ArrayList<>();
+	private List<Pedido> pedido = new ArrayList<>();*/
 
 	public long getId() {
 		return id;
@@ -86,7 +86,7 @@ public class Funcionario {
 		this.data = data;
 	}
 
-	public Caixa getCaixa() {
+	/*public Caixa getCaixa() {
 		return caixa;
 	}
 
@@ -100,7 +100,7 @@ public class Funcionario {
 
 	public void setPedido(List<Pedido> pedido) {
 		this.pedido = pedido;
-	}
-	
+	}*/
+
 	
 }
