@@ -25,7 +25,7 @@ public class Cliente {
 	
 	@NotNull
 	@Size(min=9, max = 10)
-	private long cpf;
+	private String cpf;
 	
 	@NotNull
 	@Size(max = 40)
@@ -36,10 +36,6 @@ public class Cliente {
 	
 	@NotNull
 	private boolean cupom;
-
-	@ManyToOne
-	@JsonIgnoreProperties("cliente")
-	private Caixa caixa;
 
 	public long getId() {
 		return id;
@@ -57,11 +53,11 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -89,13 +85,19 @@ public class Cliente {
 		this.cupom = cupom;
 	}
 
-	public Caixa getCaixa() {
+	/*@ManyToOne
+	@JsonIgnoreProperties("cliente")
+	private Caixa caixa;*/
+
+	
+
+	/*public Caixa getCaixa() {
 		return caixa;
 	}
 
 	public void setCaixa(Caixa caixa) {
 		this.caixa = caixa;
-	}
+	}*/
 	
 	
 }

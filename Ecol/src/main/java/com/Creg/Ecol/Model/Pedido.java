@@ -17,7 +17,7 @@ public class Pedido {
 	private long id;
 	
 	
-	private long numeroPedido;//service
+	private int numeroPedido;//service, numeroPedido
 	
 	
 	@NotNull
@@ -34,12 +34,12 @@ public class Pedido {
 	}
 
 
-	public long getNumeroPedido() {
+	public int getNumeroPedido() {
 		return numeroPedido;
 	}
 
 
-	public void setNumeroPedido(long numeroPedido) {
+	public void setNumeroPedido(int numeroPedido) {
 		this.numeroPedido = numeroPedido;
 	}
 
@@ -52,6 +52,8 @@ public class Pedido {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
+
+
 
 	
 	

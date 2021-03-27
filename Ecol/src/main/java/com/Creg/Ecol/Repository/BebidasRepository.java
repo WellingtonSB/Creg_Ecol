@@ -13,10 +13,7 @@ import com.Creg.Ecol.Model.Bebida;
 public interface BebidasRepository extends JpaRepository<Bebida, Long> {
 
 	public List<Bebida> findAllByNomeContainingIgnoreCase(String nome);
-
 	public List<Bebida> findAllByDescricaoContainingIgnoreCase(String descricao);
-
-	public List<Bebida> findAllByvalorContainingIgnoreCase(double valor);
 
 	@Query(value = "SELECT * FROM tb_produto where ativo = :ativo", nativeQuery = true)
 	public List<Bebida> findAllByAtivo(@Param("ativo") boolean ativo);

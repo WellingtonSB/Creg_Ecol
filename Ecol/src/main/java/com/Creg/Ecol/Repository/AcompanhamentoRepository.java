@@ -13,7 +13,6 @@ import com.Creg.Ecol.Model.Acompanhamento;
 public interface AcompanhamentoRepository extends JpaRepository<Acompanhamento, Long> {
 	public List<Acompanhamento> findAllByNomeContainingIgnoreCase(String nome);
 	public List<Acompanhamento> findAllByDescricaoContainingIgnoreCase(String descricao);
-	public List<Acompanhamento> findAllByvalorContainingIgnoreCase(double valor);
 	@Query(value = "SELECT * FROM tb_produto where ativo = :ativo", nativeQuery = true)
 	public List<Acompanhamento> findAllByAtivo(@Param("ativo") boolean ativo);	
 		

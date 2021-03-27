@@ -9,6 +9,6 @@ import com.Creg.Ecol.Model.Cliente;
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 	
 	public List<Cliente>findAllByNomeContainingIgnoreCase(String nome);
-	public List<Cliente>findAllByCpfContainingIgnoreCase(long cpf);
+	public List<Cliente>findAllByCpfContainingIgnoreCase(String cpf);
 
 }

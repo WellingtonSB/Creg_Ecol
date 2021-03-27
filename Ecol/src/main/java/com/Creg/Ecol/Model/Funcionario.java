@@ -34,9 +34,9 @@ public class Funcionario {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
-	@OneToMany
-	@JsonIgnoreProperties("funcionario")
-	private Pedido caixa;
+	//@OneToMany
+	//@JsonIgnoreProperties("funcionario")
+	//private Pedido caixa;
 
 	public long getId() {
 		return id;
@@ -78,13 +78,13 @@ public class Funcionario {
 		this.data = data;
 	}
 
-	public Pedido getCaixa() {
+	/*public Pedido getCaixa() {
 		return caixa;
 	}
 
 	public void setCaixa(Pedido caixa) {
 		this.caixa = caixa;
-	}
+	}*/
 		
 	
 	

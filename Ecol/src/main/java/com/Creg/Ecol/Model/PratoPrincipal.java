@@ -1,14 +1,18 @@
 package com.Creg.Ecol.Model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Size;
 
 import com.sun.istack.NotNull;
 
-public class PratoPrinciapal {
+@Entity
+@Table(name = "PratoPrincipal")
+public class PratoPrincipal {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
