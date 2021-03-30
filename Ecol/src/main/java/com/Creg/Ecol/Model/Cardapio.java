@@ -1,15 +1,12 @@
 package com.Creg.Ecol.Model;
 
-import java.util.*;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Size;
@@ -24,24 +21,25 @@ public class Cardapio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	@NotNull
 	@Size(max = 30)
 	private String nome;
-	
+
 	@NotNull
-	@Size(max=200)
+	@Size(max = 200)
 	private String descricao;
-	
+
 	@NotNull
-	@Digits(integer = 4,fraction= 2)
-	private double valor;
-	
+	@Digits(integer = 4, fraction = 2)
+	private double preco;
+
 	@NotNull
 	private boolean ativo;
-	
-	@ManyToMany(mappedBy = "cardapio", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JsonIgnoreProperties({"nome","descricao","valor","ativo"})
-	private List<Categorias> categoriaProduto = new ArrayList<>();
+
+	@ManyToOne
+	@JsonIgnoreProperties("cardapio")
+	private Pedido pedido;
 
 	public long getId() {
 		return id;
@@ -67,12 +65,12 @@ public class Cardapio {
 		this.descricao = descricao;
 	}
 
-	public double getValor() {
-		return valor;
+	public double getPreco() {
+		return preco;
 	}
 
-	public void setValor(double valor) {
-		this.valor = valor;
+	public void setPreco(double preco) {
+		this.preco = preco;
 	}
 
 	public boolean isAtivo() {
@@ -83,14 +81,13 @@ public class Cardapio {
 		this.ativo = ativo;
 	}
 
-	public List<Categorias> getCategoriaProduto() {
-		return categoriaProduto;
+	public Pedido getPedido() {
+		return pedido;
 	}
 
-	public void setCategoriaProduto(List<Categorias> categoriaProduto) {
-		this.categoriaProduto = categoriaProduto;
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
-	
-	
+
 	
 }

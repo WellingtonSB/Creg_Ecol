@@ -1,6 +1,6 @@
 package com.Creg.Ecol.Repository;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,12 +11,17 @@ import com.Creg.Ecol.Model.Cardapio;
 
 @Repository
 public interface CardapioRepository extends JpaRepository<Cardapio, Long> {
-	public List<Cardapio> findAllByNomeContainingIgonereCase(String nome);
+	public List<Cardapio> findAllByNomeContainingIgnoreCase(String nome);
 
-	public List<Cardapio> findAllByDescricaoContainingIgonereCase(String descricao);
+	public List<Cardapio> findAllByDescricaoContainingIgnoreCase(String descricao);
 
-	public List<Cardapio> findAllByValor(double valor);
+	@Query(value = "SELECT * FROM Cardapio where preco = preco", nativeQuery = true)
+	public List<Cardapio> findAllByPrecoLessThanEqual(@Param("preco")double preco);
+
+	@Query(value = "SELECT * FROM Cardapio where preco = preco", nativeQuery = true)
+	public List<Cardapio> findAllByPrecoGreaterThanEqual(@Param("preco")double preco);
 
 	@Query(value = "SELECT * FROM Cardapio where ativo = :ativo", nativeQuery = true)
 	public List<Cardapio> findAllByAtivo(@Param("ativo") boolean ativo);
+
 }
